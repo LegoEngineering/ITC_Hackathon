@@ -1,11 +1,15 @@
 <div class="container" id="list">
-	<h4 style="text-align:center">List of Shops Matching Your Search</h4>
+	<div class="panel-heading">
+	<h4 style="text-align:center" class="panel-title">List of Shops Matching Your Search</h4>
+	</div>
 	<table class = "searchResults">
 		<tr class = "searchRow">
+			<th></th>
 			<th>Shop Name</th>
 			<th>Rating</tr>
 		</tr>
 		<tr class = "searchRow" ng-repeat="shop in shops | filter:searchText">
+			<td class="line-break">{{shop.image}}</td>
 			<td class="line-break">{{shop.name}}</td>
 			<td class="line-break">{{shop.rating}}</td>
 		<tr>
