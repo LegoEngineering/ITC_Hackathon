@@ -1,6 +1,10 @@
 <head>
     <title>ShakShuk</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+    </script>
 </head>
 
 <body>
@@ -10,7 +14,15 @@
 <template name = "main">
     {{setMain}}
     {{#if loggedIn}}
-        {{>rate}}
+        {{#if showMap}}
+            {{>mapView}}
+        {{/if}}
+        {{#if showList}}
+            {{>listView}}
+        {{/if}}
+        {{#if showComments}}
+            {{>commentView}}
+        {{/if}}
     {{else}}
         <div class = "logo">Welcome to ShakShuk!</div>
         <input type = "text" id = "username" placeholder = "Username">
@@ -19,12 +31,57 @@
 </template>
 
 <template name = "mapView">
+    <div class = "header">
+        <button class = "rightButton" id = "goToList"> List View </button>
+    </div>
+    <div id="map"></div>
+</template>
 
+<template name = "listView">
+    <div class = "header">
+        <button id = "goToMap"> Map View </button>
+    </div>
+    <div>
+        <select id = "filter">
+            <option>Food</option>
+            <option>Clothes</option>
+            <option>Gift</option>
+        </select>
+        <div class = "list">
+            <ul>
+                {{#each store}}
+                    <li>
+                        <img src={{picture}} />
+                        <h3>{{name}}</h3>
+                        <p>{{score}}</p>
+
+                    </li>
+                    <button class = "viewComments" id = {{_id}}>Comments</button>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name = "commentView">
+    <div class = "header">
+        <button id = "goToList"> List View </button>
+        {{>rate}}
+    </div>
+    <div class = "list">
+        <ul>
+    {{#each comments}}
+        <li>
+        <h3>{{user}} wrote: {{comment}}</h3>
+        </li>
+    {{/each}}
+        </ul>
+    </div>
 </template>
 
 <template name = "rate">
     {{#with selectedStore}}
-    <div id = "store">{{name}}</div>
+        <div id = "store">{{name}}</div>
         <select id = "rating">
             <option>1</option>
             <option>2</option>
@@ -32,29 +89,7 @@
             <option>4</option>
             <option>5</option>
         </select>
-    <input type = "text" id ="addComment" placeholder = "Comments">
+        <input type = "text" id ="addComment" placeholder = "Comments">
         <button id = "submitScore">Submit</button>
-        {{/with}}
-</template>
-
-
-<template name = "listView">
-
-    <div>
-        <select id = "filter">
-            <option>Food</option>
-            <option>Clothes</option>
-            <option>Gift</option>
-            <option>Electronics</option>
-        </select>
-        <ul>
-            {{#each store}}
-                <li>
-                    <img src={{picture}} />
-                    <h3>{{name}}</h3>
-                    <p>{{category}}</p>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
+    {{/with}}
 </template>
