@@ -1,0 +1,72 @@
+ var largeInfowindow = new google.maps.InfoWindow();
+
+        //the following group uses location array to create array of markers on initialize
+        for (var m = 0; m < locations.length; m++){
+            //Get position from array
+            var position = locations[i].location;
+            var title = locations[i].title;
+            //Create a marker per location, and put into markers array.
+            var marker = new google.maps.Marker({
+                map: map,
+                position: position,
+                title: title,
+                animation: google.maps.Animation.DROP,
+                id: i
+            });
+            //Push the marker to our array of markers.
+//            marker.push(marker);
+            //Extend the boundaries of the map for each marker
+            bounds.extend(marker.position);
+            // Create an onclick event to open an infowindow at each marker.
+            marker.addListener('click',function(){
+                populateInfoWindow(this,largeInfowindow);
+            });
+        }
+        map.fitBounds(bounds);
+
+        //This function populates the infowindow when the marker is clicked. We'll only
+        //allow one infowindow which will open at the marker that is clicked, and populate
+        //based on that marker's position.
+        function populateInfoWindow(marker, infowindow){
+            //Check to make sure the infowindow is not already opened on this marker.
+            if (infowindow.marker != marker){
+                infowindow.marker = marker;
+                infowindow.setContent('<div>' + marker.title + '</div>');
+                infowindow.open(map, marker);
+                // Make sure the marker property is cleared if the infowindow is closed/
+                infowindow.addListener('closeclick', function(){
+                    infowindow.setMarker(null);
+                });
+            }
+
+        }
+
+    }
+
+    //    //        Testing functions
+    //        var printPins = function(locations) {
+    //            for (var j = 0; j < locations.length; j++) {
+    //                var mark = new google.maps.Market({
+    //                    position: locations[j].position,
+    //                    map: map,
+    //                    title: locations[j].title
+    //
+    //                });
+    //            }
+    //        }
+    //            var infoFunc = function(locations) {
+    //                for (var k = 0; k < locations.length; k++) {
+    //                    var infoWin = new google.maps.InfoWindow({
+    //                        content: locations[k].content
+    //                    });
+    //                }
+    //            }
+    //
+    //            var clickFunc = function(locations) {
+    //                for (var l = 0; l < locations.length; l++) {
+    //                    mark.addListener('click', function () {
+    //                        infowindow.open(map, mark);
+    //                    });
+    //                }
+    //            }
+    //
