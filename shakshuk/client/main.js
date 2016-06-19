@@ -1,5 +1,9 @@
 
 Template.main.helpers({
+  "setMain":function(){
+    Session.set("filter", null);
+    Session.set("storeRate", "10");
+  },
   "loggedIn":function(){
     console.log("hi");
     return Meteor.user();
@@ -18,11 +22,17 @@ Template.main.events({
 
 });
 
+Template.rate.helpers({
+  "selectedStore":function(){
+    return Stores.findOne({_id: Session.get("storeRate")});
+  }
+});
+
 Template.rate.events({
-  "click #submitRate": function(){
-    var store = document.getElementById("store");
-    var score = document.getElementById("rating");
-    var comment = document.getElementById("addComment");
+  "click #submitScore": function(){
+    var store = Session.get("storeRate");
+    var score = $("#rating").val();
+    var comment = document.getElementById("addComment").value;
     if (score != null && store != null) {
       Meteor.call("addScore", store, score);
     }
@@ -35,7 +45,15 @@ Template.rate.events({
 
 Template.listView.helpers({
   "store":function(){
-    return Stores.find();
+    return Stores.find({category: Session.get("filter")});
+  }
+});
+
+Template.listView.events({
+  "change #filter":function(e){
+    var filter = $(e.target).val();
+    console.log(filter);
+    Session.set("filter", filter);
   }
 });
 
