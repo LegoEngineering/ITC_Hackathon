@@ -1,0 +1,48 @@
+.text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.imgshuk {
+     height: 300px;
+    display: inline-block;
+}
+
+.img{
+    background-image: url('https://format-com-cld-res.cloudinary.com/image/private/s--X0pBdzWi--/c_limit,g_center,h_1200,w_65535/a_auto,fl_keep_iptc.progressive,q_95/171984-9635667-Portfolio_Fabi_Kocubey_17_jpg.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    height: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height:600px;
+}
+
+.comments {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    display: inline-block;
+    color: white;
+}
+
+.stripe1{
+    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.content-holder{
+    display: table;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.content-holder .imgshuk{
+    display: table-cell;
+    vertical-align: middle;
+}
