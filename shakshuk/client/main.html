@@ -1,5 +1,5 @@
 <head>
-  <title>ShakShuk</title>
+    <title>ShakShuk</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -8,13 +8,14 @@
 </body>
 
 <template name = "main">
+    {{setMain}}
     {{#if loggedIn}}
-    {{>listView}}
-{{else}}
+        {{>rate}}
+    {{else}}
         <div class = "logo">Welcome to ShakShuk!</div>
         <input type = "text" id = "username" placeholder = "Username">
         <button id = "createUser">Create User</button>
-{{/if}}
+    {{/if}}
 </template>
 
 <template name = "mapView">
@@ -22,13 +23,21 @@
 </template>
 
 <template name = "rate">
-    <div id = {{_id}}> </div>
-    <div id = {{_id}}>{{name}}</div>
-        <div class="rating">
-            <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
-        </div>
+    {{#with selectedStore}}
+    <div id = "store">{{name}}</div>
+        <select id = "rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
     <input type = "text" id ="addComment" placeholder = "Comments">
+        <button id = "submitScore">Submit</button>
+        {{/with}}
 </template>
+
+
 <template name = "listView">
 
     <div>
@@ -39,13 +48,13 @@
             <option>Electronics</option>
         </select>
         <ul>
-    {{#each store}}
-        <li>
-            <img src={{picture}} />
-            <h3>{{name}}</h3>
-            <p>{{score}}</p>
-        </li>
-        {{/each}}
+            {{#each store}}
+                <li>
+                    <img src={{picture}} />
+                    <h3>{{name}}</h3>
+                    <p>{{category}}</p>
+                </li>
+            {{/each}}
         </ul>
     </div>
 </template>
