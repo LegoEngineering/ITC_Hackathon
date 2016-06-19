@@ -1,0 +1,51 @@
+<head>
+  <title>ShakShuk</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+{{>main}}
+</body>
+
+<template name = "main">
+    {{#if loggedIn}}
+    {{>listView}}
+{{else}}
+        <div class = "logo">Welcome to ShakShuk!</div>
+        <input type = "text" id = "username" placeholder = "Username">
+        <button id = "createUser">Create User</button>
+{{/if}}
+</template>
+
+<template name = "mapView">
+
+</template>
+
+<template name = "rate">
+    <div id = {{_id}}> </div>
+    <div id = {{_id}}>{{name}}</div>
+        <div class="rating">
+            <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
+        </div>
+    <input type = "text" id ="addComment" placeholder = "Comments">
+</template>
+<template name = "listView">
+
+    <div>
+        <select id = "filter">
+            <option>Food</option>
+            <option>Clothes</option>
+            <option>Gift</option>
+            <option>Electronics</option>
+        </select>
+        <ul>
+    {{#each store}}
+        <li>
+            <img src={{picture}} />
+            <h3>{{name}}</h3>
+            <p>{{score}}</p>
+        </li>
+        {{/each}}
+        </ul>
+    </div>
+</template>
