@@ -1,0 +1,208 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Title</title>-->
+<!--<style type="text/css">-->
+<!--html, body { height: 100%; margin: 0; padding: 0; }-->
+<!--#map { height: 100%; }-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--</div>-->
+<!--<div id="map"></div>-->
+<!--<script>-->
+<!--var map;-->
+<!--function initMap() {-->
+<!--map = new google.maps.Map(document.getElementById('map'), {-->
+<!--center: {lat: 40.7413549, lng: -73.9980244},-->
+<!--zoom: 13-->
+<!--});-->
+<!--}-->
+<!--</script>-->
+<!--<script src="https://maps/googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap" async defer></script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map" style="width: 500px; height: 400px;"></div>
+
+<script type="text/javascript">
+    var locations = [
+        ['Place 1', 32.0686807, 34.7704091],
+        ['Place 2', 32.0696693, 34.7703987],
+        ['Place 3', 32.0695268, 34.7700604],
+        ['Place 4', 32.0694686, 34.7698905],
+        ['Place 5', 32.0694726, 34.7699017]
+    ]
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(32.06868, 34.76905),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+</script>
+
+
+
+
+
+
+
+
+
+<!--<div id="map"></div>-->
+<!--<script>-->
+
+    <!--function initMap() {-->
+
+        <!--var myLatLng = {lat: 32.06868, lng: 34.76905};-->
+
+        <!--var map = new google.maps.Map(document.getElementById('map'), {-->
+            <!--zoom: 18,-->
+            <!--center: myLatLng-->
+        <!--});-->
+
+<!--//send map, lat lng, title, content for info window-->
+        <!--var marker = new google.maps.Marker({-->
+            <!--position: myLatLng,-->
+            <!--map: map,-->
+            <!--title: 'Welcome to Shuk HaCarmel!'-->
+        <!--});-->
+
+        <!--var infowindow = new google.maps.InfoWindow({-->
+            <!--content: 'Do you like your experience so far?'-->
+
+        <!--});-->
+        <!--marker.addListener('click',function(){-->
+            <!--infowindow.open(map, marker);-->
+        <!--});-->
+
+        <!--//        Testing functions-->
+        <!--var printPins = function(locations) {-->
+            <!--for (var j = 0; j < locations.length; j++) {-->
+                <!--var mark = new google.maps.Market({-->
+                    <!--position: locations[j].position,-->
+                    <!--map: map,-->
+                    <!--title: locations[j].title-->
+
+                <!--});-->
+            <!--}-->
+        <!--}-->
+        <!--var infoFunc = function(locations) {-->
+            <!--for (var k = 0; k < locations.length; k++) {-->
+                <!--var infoWin = new google.maps.InfoWindow({-->
+                    <!--content: locations[k].content-->
+                <!--});-->
+            <!--}-->
+        <!--}-->
+
+        <!--var clickFunc = function(locations) {-->
+            <!--for (var l = 0; l < locations.length; l++) {-->
+                <!--mark.addListener('click', function () {-->
+                    <!--infowindow.open(map, mark);-->
+                <!--});-->
+            <!--}-->
+        <!--}-->
+
+
+        <!--var locations = [-->
+            <!--{title: 'Place 1', content: 'Blah', location: {lat: 32.0686807, lng: 34.7704091}},-->
+            <!--{title: 'Place 2', content: 'Blah', location: {lat: 32.0696693, lng: 34.7703987}},-->
+            <!--{title: 'Place 3', content: 'Blah', location: {lat: 32.0695268, lng: 34.7700604}},-->
+            <!--{title: 'Place 4', content: 'Blah', location: {lat: 32.0694686, lng: 34.7698905}},-->
+            <!--{title: 'Place 5', content: 'Blah', location: {lat: 32.0694726, lng: 34.7699017}},-->
+            <!--{title: 'Place 6', content: 'Blah', location: {lat: 32.0694106, lng: 34.7698328}},-->
+            <!--{title: 'Place 7', content: 'Blah', location: {lat: 32.0693564, lng: 34.7697147}},-->
+            <!--{title: 'Place 8', content: 'Blah', location: {lat: 32.0692761, lng: 34.7695830}},-->
+            <!--{title: 'Place 9', content: 'Blah', location: {lat: 32.0692419, lng: 34.7695444}},-->
+            <!--{title: 'Place 10', content: 'Blah', location: {lat: 32.0691698, lng: 34.7694296}},-->
+
+
+        <!--]-->
+        <!--return;-->
+        <!--var largeInfowindow = new google.maps.InfoWindow();-->
+
+        <!--//the following group uses location array to create array of markers on initialize-->
+        <!--for (var i = 0; i < locations.length; i++){-->
+            <!--//Get position from array-->
+            <!--var position = locations[i].location;-->
+            <!--var title = locations[i].title;-->
+            <!--//Create a marker per location, and put into markers array.-->
+            <!--var marker = new google.maps.Marker({-->
+                <!--map: map,-->
+                <!--position: position,-->
+                <!--title: title,-->
+                <!--animation: google.maps.Animation.DROP,-->
+                <!--id: i-->
+            <!--});-->
+            <!--//Push the marker to our array of markers.-->
+<!--//            marker.push(marker);-->
+            <!--//Extend the boundaries of the map for each marker-->
+            <!--bounds.extend(marker.position);-->
+            <!--// Create an onclick event to open an infowindow at each marker.-->
+            <!--marker.addListener('click',function(){-->
+                <!--populateInfoWindow(this,largeInfowindow);-->
+            <!--});-->
+        <!--}-->
+        <!--map.fitBounds(bounds);-->
+
+        <!--//This function populates the infowindow when the marker is clicked. We'll only-->
+        <!--//allow one infowindow which will open at the marker that is clicked, and populate-->
+        <!--//based on that marker's position.-->
+        <!--function populateInfoWindow(marker, infowindow){-->
+            <!--//Check to make sure the infowindow is not already opened on this marker.-->
+            <!--if (infowindow.marker != marker){-->
+                <!--infowindow.marker = marker;-->
+                <!--infowindow.setContent('<div>' + marker.title + '</div>');-->
+                <!--infowindow.open(map, marker);-->
+                <!--// Make sure the marker property is cleared if the infowindow is closed/-->
+                <!--infowindow.addListener('closeclick', function(){-->
+                    <!--infowindow.setMarker(null);-->
+                <!--});-->
+            <!--}-->
+
+        <!--}-->
+
+    <!--}-->
+<!--</script>-->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+</script>
+</body>
+</html>
