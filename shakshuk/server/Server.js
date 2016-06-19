@@ -2,7 +2,17 @@ Meteor.methods({
 
     addScore: function(storeID, score){
       var store = Stores.findOne({_id: storeID});
-        var newScore = (store.score + score)/(store.total+1);
+        var a;
+        if (store.total == 0){
+         a =  parseInt(score);
+        }
+        else {
+            a = (parseInt(store.score)*parseInt(store.total)) + parseInt(score);
+        }
+        console.log(a);
+        var b = store.total+1;
+        var newScore = a/b;
+        console.log(newScore);
         Stores.update(
             { _id: storeID },
             {
