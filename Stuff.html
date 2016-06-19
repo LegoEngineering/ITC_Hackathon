@@ -55,41 +55,8 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'Welcome to Shuk HaCarmel!'
+            title: 'Hello World!'
         });
-        var infowindow = new google.maps.InfoWindow({
-            content: 'Do you like your experience so far?'
-        });
-        marker.addListener('click',function(){
-            infowindow.open(map, marker);
-            });
-        var locations = [
-            {title: 'Blah Blah', location: {lat:  , lng:  }},
-            {title: }
-        ]
-        var largeInfowindow = new google.maps.InfoWindow();
-
-        //the following group uses location array to create array of markers on initialize
-        for (var i = 0; i < locations.length; i++){
-            //Get position from array
-            var position = locations[i].location;
-            var title = locations[i].title;
-            //Create a marker per location, and put into markers array.
-            var marker = new google.maps.Marker({
-                map: map,
-                position: position,
-                title: title,
-                animation: google.maps.Animation.DROP,
-                id: i
-            });
-            //Push the marker to our array of markers.
-            markers.push(marker);
-            // Create an onclick event to open an infowindow at each marker.
-            marker.addListener('click',function(){
-                populateInfoWindow(this,largeInfowindow);
-            });
-        }
-
     }
 </script>
 <script async defer
