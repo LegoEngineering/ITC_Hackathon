@@ -1,0 +1,66 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+    <!--<style type="text/css">-->
+        <!--html, body { height: 100%; margin: 0; padding: 0; }-->
+        <!--#map { height: 100%; }-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+ <!--</div>-->
+<!--<div id="map"></div>-->
+<!--<script>-->
+    <!--var map;-->
+    <!--function initMap() {-->
+        <!--map = new google.maps.Map(document.getElementById('map'), {-->
+            <!--center: {lat: 40.7413549, lng: -73.9980244},-->
+            <!--zoom: 13-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
+<!--<script src="https://maps/googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap" async defer></script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+    function initMap() {
+        var myLatLng = {lat: 32.06868, lng: 34.76905};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+</script>
+</body>
+</html>
