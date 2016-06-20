@@ -33,80 +33,79 @@
             center: myLatLng
         });
 
+        var clothes_icon = {
+            url: 'http://gdurl.com/RI3e',
+            size: new google.maps.Size(50, 50),
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(0, 32)
+        };
+
+        var gifts_icon = {
+            url: 'http://gdurl.com/Qu0e',
+            size: new google.maps.Size(50, 50),
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(0, 32)
+        };
+
+        var food_icon = {
+            url: 'http://gdurl.com/6WX1',
+            size: new google.maps.Size(50, 50),
+            // The origin for this image is (0, 0).
+            origin: new google.maps.Point(0, 0),
+            // The anchor for this image is the base of the flagpole at (0, 32).
+            anchor: new google.maps.Point(0, 32)
+        };
 
 
         var locations = [
             {title: 'Shuk HaCarmel', content: 'Welcome to the Shuk! Good luck with your shopping!', image:'<img src=https://cdn.secrettelaviv.com/wp-content/uploads/2016/03/21862_Shuk-hacarmel.jpg>', location: {lat: 32.06868, lng: 34.76905}},
-            {title: 'Clothes', content: 'Shoes </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0696807, lng: 34.7704091}},
-            {title: 'Gifts', content: 'Judaica </br>&#9733 &#9733 &#9733 &#9733 &#9733', location: {lat: 32.0696693, lng: 34.7703987}},
-            {title: 'Gifts', content: 'School supplies </br>&#9733 &#9733 &#9733 &#9734 &#9734', location: {lat: 32.0695268, lng: 34.7700604}},
-            {title: 'Clothes', content: 'Shirts and pants </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694686, lng: 34.7698905}},
-            {title: 'Gifts', content: 'Toys and puzzles </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694726, lng: 34.7699017}},
-            {title: 'Gifts', content: 'Home supplies </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694106, lng: 34.7698328}},
-            {title: 'Gifts', content: 'Phone cases </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0693564, lng: 34.7697147}},
-            {title: 'Clothes', content: 'Bags </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0692761, lng: 34.7695830}},
-            {title: 'Food', content: 'Fruit </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0692419, lng: 34.7695444}},
-            {title: 'Clothes', content: 'Pants and skirts </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0691698, lng: 34.7694296}}
+            {title: 'Clothes', content: 'Shoes </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/l0Ui>', icon: clothes_icon, location: {lat: 32.0696807, lng: 34.7704091}},
+            {title: 'Gifts', content: 'Judaica </br>&#9733 &#9733 &#9733 &#9733 &#9733',  image:'<img src=http://gdurl.com/pgtx>',  icon: gifts_icon, location: {lat: 32.0696693, lng: 34.7703987}},
+            {title: 'Gifts', content: 'School supplies </br>&#9733 &#9733 &#9733 &#9734 &#9734',  image:'<img src=http://gdurl.com/WN9I>',  icon: gifts_icon, location: {lat: 32.0695268, lng: 34.7700604}},
+            {title: 'Clothes', content: 'Shirts and pants </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/rukd>',  icon: clothes_icon, location: {lat: 32.0694686, lng: 34.7698905}},
+            {title: 'Gifts', content: 'Toys and puzzles </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/l2aUR>',  icon: gifts_icon, location: {lat: 32.0694726, lng: 34.7699017}},
+            {title: 'Gifts', content: 'Home supplies </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/uBhE>',  icon: gifts_icon, location: {lat: 32.0694106, lng: 34.7698328}},
+            {title: 'Gifts', content: 'Phone cases </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/xO04>',  icon: gifts_icon, location: {lat: 32.0693564, lng: 34.7697147}},
+            {title: 'Clothes', content: 'Bags </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/vi_f>',  icon: clothes_icon, location: {lat: 32.0692761, lng: 34.7695830}},
+            {title: 'Food', content: 'Fruit </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/PXp7>',  icon: food_icon, location: {lat: 32.0692419, lng: 34.7695444}},
+            {title: 'Clothes', content: 'Pants and skirts </br>&#9733 &#9733 &#9733 &#9733 &#9734',   image:'<img src=http://gdurl.com/w-Zb>',  icon: clothes_icon, location: {lat: 32.0691698, lng: 34.7694296}},
+
+            {title: 'Gifts', content: 'Flowers </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/q__H>', icon: gifts_icon, location: {lat: 32.0691251, lng: 34.7694017}},
+            {title: 'Clothes', content: 'Bags </br>&#9733 &#9733 &#9733 &#9733 &#9733', image:'<img src=http://gdurl.com/4YUd>',  icon: clothes_icon, location: {lat: 32.0689746, lng: 34.7692796}},
+            {title: 'Gifts', content: 'Toys </br>&#9733 &#9733 &#9733 &#9734 &#9734', image:'<img src=http://gdurl.com/P4kn>',  icon: gifts_icon, location: {lat: 32.0688167, lng: 34.7691016}},
+            {title: 'Gifts', content: 'Beauty </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/sge8>',  icon: gifts_icon, location: {lat: 32.0687643, lng: 34.7690506}},
+            {title: 'Food', content: 'Gummies </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/zGMm>',  icon: food_icon, location: {lat: 32.0686812, lng: 34.7689658}},
+            {title: 'Clothes', content: 'Shoes </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/l8bY>',  icon: clothes_icon, location: {lat: 32.0685587, lng: 34.7686908}},
+            {title: 'Food', content: 'Nuts </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/cttm>',  icon: food_icon, location: {lat: 32.0684971, lng: 34.7686155}},
+            {title: 'Food', content: 'Nuts and Fruits </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/nTdl>',  icon: food_icon, location: {lat: 32.0683727, lng: 34.7685116}},
+            {title: 'Clothes', content: 'Pants </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/buZYr>',  icon: clothes_icon, location: {lat: 32.0683345, lng: 34.7684833}},
+            {title: 'Food', content: 'Olives </br>&#9733 &#9733 &#9733 &#9733 &#9734', image:'<img src=http://gdurl.com/z7Hc>',  icon: food_icon, location: {lat: 32.0682802, lng: 34.7684037}}
         ]
-
-
-
-        function showInfo(target) {
-            document.getElementById(target).style.display = 'block';
-        }
-
-        function hideInfo(target) {
-            document.getElementById(target).style.display = 'none';
-        }
-//        var filler =   '<div class="iw-container">' +
-//                '<div class="iw-title">' +
-//                '<nav class="navbar navbar-default navbar-static-top">' +
-//                '<div class="container">' +
-//                '<ul class="nav nav-tabs">' +
-//                '<li role="presentation"><a href="#info" onclick="showInfo(info); hideInfo(review)">Info</a></li> ' +
-//        '<li role="presentation"><a href="#review" onclick="showInfo(review); hideInfo(info)">Review</a></li>' +
-//        '</ul>' +
-//        '</div>' +
-//        '</nav>' +
-//        '</div>' +
-//        '<div class="iw-content" id="info">' +
-//        image +
-//        '<p>' + content + '</p>' +
-//        '</div>' +
-//        '<div class="iw-bottom-gradient"></div>' +
-//        '<div class="iw-content" id="review">'+
-//        image +
-//        '<label for="userInput">Please leave your review here: </label>' +
-//        '<input type="text" id="userInput" placeholder="Comments"/>' +
-//        '<button>submit</button>' +
-//        '<div class="iw-bottom-gradient"></div>' +
-//        '</div>' +
-//        '</div>';
-
 
         for (var i in locations){
             var l = locations[i];
-            addMarker(l.location,l.title,l.content, l.image);
-
+            addMarker(l.location,l.title,l.content, l.image, l.icon);
         }
-
-
-
     }
 
 function toggleVisibility(divToShow, divTohide, headerBorderAdd, headerBorderSub){
     document.getElementById(divToShow).style.display = 'block';
     document.getElementById(divTohide).style.display = 'none';
-    document.getElementById(headerBorderAdd).style.backgroundColor = 'grey';
+    document.getElementById(headerBorderAdd).style.backgroundColor = 'lightgray';
     document.getElementById(headerBorderSub).style.backgroundColor = 'white';
 
 }
 
-    var addMarker = function(myLatLng, title, content, image){
+    var addMarker = function(myLatLng, title, content, image, icon){
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: title
+            title: title,
+            icon: icon
         });
 
         var infowindow = new google.maps.InfoWindow({
