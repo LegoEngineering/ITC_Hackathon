@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="MapsAPIstyle.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+//begin
+    var map;
+    function initMap() {
+
+        var myLatLng = {lat: 32.06868, lng: 34.76905};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 18,
+            center: myLatLng
+        });
+
+
+
+        var locations = [
+            {title: 'Shuk HaCarmel', content: 'Welcome to the Shuk! Good luck with your shopping!', image:'<img src=https://cdn.secrettelaviv.com/wp-content/uploads/2016/03/21862_Shuk-hacarmel.jpg>', location: {lat: 32.06868, lng: 34.76905}},
+            {title: 'Clothes', content: 'Shoes </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0696807, lng: 34.7704091}},
+            {title: 'Gifts', content: 'Judaica </br>&#9733 &#9733 &#9733 &#9733 &#9733', location: {lat: 32.0696693, lng: 34.7703987}},
+            {title: 'Gifts', content: 'School supplies </br>&#9733 &#9733 &#9733 &#9734 &#9734', location: {lat: 32.0695268, lng: 34.7700604}},
+            {title: 'Clothes', content: 'Shirts and pants </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694686, lng: 34.7698905}},
+            {title: 'Gifts', content: 'Toys and puzzles </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694726, lng: 34.7699017}},
+            {title: 'Gifts', content: 'Home supplies </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0694106, lng: 34.7698328}},
+            {title: 'Gifts', content: 'Phone cases </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0693564, lng: 34.7697147}},
+            {title: 'Clothes', content: 'Bags </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0692761, lng: 34.7695830}},
+            {title: 'Food', content: 'Fruit </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0692419, lng: 34.7695444}},
+            {title: 'Clothes', content: 'Pants and skirts </br>&#9733 &#9733 &#9733 &#9733 &#9734', location: {lat: 32.0691698, lng: 34.7694296}}
+        ]
+
+
+
+        function showInfo(target) {
+            document.getElementById(target).style.display = 'block';
+        }
+
+        function hideInfo(target) {
+            document.getElementById(target).style.display = 'none';
+        }
+//        var filler =   '<div class="iw-container">' +
+//                '<div class="iw-title">' +
+//                '<nav class="navbar navbar-default navbar-static-top">' +
+//                '<div class="container">' +
+//                '<ul class="nav nav-tabs">' +
+//                '<li role="presentation"><a href="#info" onclick="showInfo(info); hideInfo(review)">Info</a></li> ' +
+//        '<li role="presentation"><a href="#review" onclick="showInfo(review); hideInfo(info)">Review</a></li>' +
+//        '</ul>' +
+//        '</div>' +
+//        '</nav>' +
+//        '</div>' +
+//        '<div class="iw-content" id="info">' +
+//        image +
+//        '<p>' + content + '</p>' +
+//        '</div>' +
+//        '<div class="iw-bottom-gradient"></div>' +
+//        '<div class="iw-content" id="review">'+
+//        image +
+//        '<label for="userInput">Please leave your review here: </label>' +
+//        '<input type="text" id="userInput" placeholder="Comments"/>' +
+//        '<button>submit</button>' +
+//        '<div class="iw-bottom-gradient"></div>' +
+//        '</div>' +
+//        '</div>';
+
+
+        for (var i in locations){
+            var l = locations[i];
+            addMarker(l.location,l.title,l.content, l.image);
+
+        }
+
+
+
+    }
+
+function toggleVisibility(divToShow, divTohide, headerBorderAdd, headerBorderSub){
+    document.getElementById(divToShow).style.display = 'block';
+    document.getElementById(divTohide).style.display = 'none';
+    document.getElementById(headerBorderAdd).style.backgroundColor = 'grey';
+    document.getElementById(headerBorderSub).style.backgroundColor = 'white';
+
+}
+
+    var addMarker = function(myLatLng, title, content, image){
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: title
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: '<div class="iw-container">' +
+            '<div class="iw-title">' +
+            '<div class="header">' +
+            '<div class="headerTab left" id="left">' +
+            '<div role="presentation"><a href="#info" onclick="toggleVisibility(\'info\',\'review\',\'left\',\'right\')">Info</a></div> ' +
+                    '</div>' +
+            '<div class="headerTab right" id="right">' +
+            '<div role="presentation"><a href="#review" onclick="toggleVisibility(\'review\',\'info\',\'right\',\'left\')">Review</a></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="iw-content" id="info">' +
+            image +
+            '<br/>' +
+            '<div class="contentImg">' + content + '</div>' +
+            '</div>' +
+            '<div class="iw-content" id="review">'+
+            image +
+            '<br/>' +
+            '<div class="contentImg">Leave review here: <br/></div>' +
+            '<input type="text" id="userInput" placeholder="Comments"/>' +
+            '<button>submit</button>' +
+            '</div>' +
+            '</div>'
+
+        });
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+</script>
+</body>
+</html>
