@@ -6,8 +6,16 @@
 .font-text{
     font-family: 'Roboto', sans-serif;
     display: inline-block;
-
+    text-shadow: 3px 3px 3px #205f6c;
+    font-size: 45px;
 }
+ .smalltext{
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    text-shadow: 1px 1px 1px #205f6c;
+    font-size: 15px;
+}
+
 
 .dropdown-1{
     background: transparent;
