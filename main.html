@@ -1,0 +1,142 @@
+<head>
+    <title>ShakShuk</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+    </script>
+</head>
+
+<body>
+{{>main}}
+</body>
+
+<template name = "main">
+    {{setMain}}
+    {{#if loggedIn}}
+        {{#if showMap}}
+            {{>mapView}}
+        {{/if}}
+        {{#if showList}}
+            {{>listView}}
+        {{/if}}
+        {{#if showComments}}
+            {{>commentView}}
+        {{/if}}
+        {{#if showShopping}}
+            {{>shopView}}
+        {{/if}}
+    {{else}}
+        <div class = "logo">Welcome to ShakShuk!</div>
+        <input type = "text" id = "username" placeholder = "Username">
+        <button id = "createUser">Create User</button>
+    {{/if}}
+</template>
+
+<template name = "mapView">
+    <div class = "header">
+        <button class = "rightButton" id = "goToList"> List View </button>
+        <button id = "goToShopping">Shopping Cart</button>
+    </div>
+    <div id="map"></div>
+</template>
+
+<template name = "listView">
+    <div class = "header">
+        <button id = "goToMap"> Map View </button>
+    </div>
+    <div>
+        <select id = "filter">
+            <option>Food</option>
+            <option>Clothes</option>
+            <option>Gift</option>
+        </select>
+        <div class = "list">
+            <ul>
+                {{#each store}}
+                    <li>
+                        <img src={{picture}} />
+                        <h3>{{name}}</h3>
+                        <p>{{score}}</p>
+
+                    </li>
+                    <button class = "viewComments" id = {{_id}}>Comments</button>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>
+
+<template name = "commentView">
+    <div class = "header">
+        <button id = "goToList"> List View </button>
+        {{>rate}}
+    </div>
+    <div class = "list">
+        <ul>
+            {{#each comments}}
+                <li>
+                    <h3>{{user}} wrote: {{comment}}</h3>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
+<template name = "rate">
+    {{#with selectedStore}}
+        <div id = "store">{{name}}</div>
+        <select id = "rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <input type = "text" id ="addComment" placeholder = "Comments">
+        <button id = "submitScore">Submit</button>
+    {{/with}}
+</template>
+
+<template name="shopView">
+    <div class="header">
+        <button id = "goToMap">Map View</button>
+    </div>
+    <select name="shoppingForm">
+        <input type="checkbox" name="list"  value="Fruits">  <a href="#">FRUITS</a> <br>
+        <input type="checkbox" name="list"  value="Vegetables">  <a href="#">VEGETABLES</a> <br>
+        <input type="checkbox" name="list"  value="Cheese">  <a href="#">CHEESE</a><br>
+        <input type="checkbox" name="list"  value="Nuts">  <a href="#">NUTS</a><br>
+        <input type="checkbox" name="list"  value="Spices">  <a href="#">SPICES</a> <br>
+        <input type="checkbox" name="list"  value="Candies">  <a href="#">CANDIES</a> <br>
+        <input type="checkbox" name="list"  value="Desserts">  <a href="#">DESSERTS</a><br>
+        <input type="checkbox" name="list"  value="Fashion">  <a href="#">FASHION</a> <br>
+        <input type="checkbox" name="list"  value="Sports">  <a href="#">SPORTS</a> <br>
+        <input type="checkbox" name="list"  value="Underwear">  <a href="#">UNDERWEAR</a><br>
+        <input type="checkbox" name="list"  value="Shoes">  <a href="#">SHOES</a><br>
+        <input type="checkbox" name="list"  value="Glasses">  <a href="#">GLASSES</a> <br>
+        <input type="checkbox" name="list"  value="Bags">  <a href="#">BAGS</a><br>
+        <input type="checkbox" name="list"  value="Home">  <a href="#">HOME</a><br>
+        <input type="checkbox" name="list"  value="Judaica">  <a href="#">JUDAICA</a><br>
+        <input type="checkbox" name="list"  value="Kitchen">  <a href="#">KITCHEN</a> <br>
+        <input type="checkbox" name="list"  value="Jewelry">  <a href="#">JEWELRY</a> <br>
+        <input type="checkbox" name="list"  value="Electronics">  <a href="#">ELECTRONICS</a><br>
+        <input type="checkbox" name="list"  value="Accessories">  <a href="#">ACCESSORIES</a><br>
+        <input type="checkbox" name="list"  value="Beauty">  <a href="#">BEAUTY</a> <br>
+    </select>
+    <button class = "makeList">Show me the best shops!</button>
+    <div class = "list">
+        <ul>
+            {{#each stores}}
+                <li>
+                    <img src={{picture}} />
+                    <h3>{{name}}</h3>
+                    <p>{{score}}</p>
+
+                </li>
+                <button class = "viewComments" id = {{_id}}>Comments</button>
+            {{/each}}
+        </ul>
+    </div>
+
+</template>
