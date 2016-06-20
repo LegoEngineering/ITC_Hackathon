@@ -31,3 +31,8 @@
 .margin-title{
     margin-top: 150px;
 }
+
+a, a:focus, a:hover{
+    color: black;
+    font-family: Roboto;
+}
