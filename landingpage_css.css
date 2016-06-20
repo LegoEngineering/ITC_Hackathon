@@ -1,0 +1,41 @@
+.stripe1 {
+    background: transparent;
+    margin: 0 0;
+}
+
+.font-text{
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+
+}
+
+.dropdown-1{
+    background: transparent;
+}
+
+.img {
+
+    background-image: url("https://format-com-cld-res.cloudinary.com/image/private/s--X0pBdzWi--/c_limit,g_center,h_1200,w_65535/a_auto,fl_keep_iptc.progressive,q_95/171984-9635667-Portfolio_Fabi_Kocubey_17_jpg.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    height:100%;
+    display: block;
+    margin: 0 0;
+}
+
+.container-fluid {
+    margin-left: 80px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+/*.margin-title{*/
+    /*margin-top: 10px;*/
+/*}*/
+
+.cover {
+    padding: 100px 20px;
+}
