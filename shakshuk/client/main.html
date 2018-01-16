@@ -1,0 +1,280 @@
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ShakShuk</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbAJhf4JF1R8LISDt7YwR-4R3v_EcnLC4&callback=initMap">
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="cover.css" rel="stylesheet">
+
+</head>
+
+<body>
+{{>main}}
+</body>
+
+<template name = "main">
+    {{setMain}}
+    {{#if showLanding}}
+        <div class = "container-fluid landingImg">
+            <div class="margin-title"></div>
+            <div class="inner cover  ">
+                <h1 class="cover-heading font-text">SHACK SHUK.</h1> <br>
+                <p class="lead font-text">the best way of shuking</p> <br>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default  smalltext" id = "mapButton">SHACK SHUCK WITH US!</a>
+                </p>
+            </div>
+        </div>
+    {{/if}}
+
+        <!--{{#if loggedIn}}-->
+    {{#if showMap}}
+
+        <nav class="navbar navbar-inverse stripe1">
+            <div class="container-fluid">
+
+                <ul class="nav navbar-nav nav-text">
+
+                    <li class="dropdown"><a class="dropdown-toggle" id="food_icon" data-toggle="dropdown" href="#">FOOD </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-1 "> <a href="#"  >VEGETABLES</a></li>
+                            <li>  <a href="#">FRUITS</a></li>
+                            <li>  <a href="#" >GRAINS</a></li>
+                            <li>  <a href="#" >BAKERY</a></li>
+                            <li>  <a href="#">CHEESE</a></li>
+                            <li>  <a href="#">NUTS</a></li>
+                            <li>  <a href="#">SPICES</a></li>
+                            <li>  <a href="#">CANDIES</a></li>
+                            <li>  <a href="#">DESSERTS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" id = "clothes_icon" data-toggle="dropdown" href="#">CLOTHES </a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="#">FASHION</a></li>
+                            <li>  <a href="#">SPORTS</a></li>
+                            <li>  <a href="#">UNDERWEAR</a></li>
+                            <li>  <a href="#">SHOES</a></li>
+                            <li>  <a href="#">GLASSES</a></li>
+                            <li>  <a href="#">BAGS</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" id = "gifts_icon" data-toggle="dropdown" href="#">GIFTS </a>
+                        <ul class="dropdown-menu">
+                            <li> <a href="#">HOME</a></li>
+                            <li>  <a href="#">JUDAICA</a></li>
+                            <li>  <a href="#">KITCHEN</a></li>
+                            <li>  <a href="#">JEWELRY</a></li>
+                            <li>  <a href="#">ELECTRONICS</a></li>
+                            <li>  <a href="#">ACCESORIES</a></li>
+                            <li>  <a href="#">BEAUTY</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">SHOPPING LIST </a>
+                        <ul class="dropdown-menu">
+                            <input type="checkbox" name="list"  value="20">  <a href="#">FRUITS</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">VEGETABLES</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">CHEEASE</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">NUTS</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">SPICES</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">CANDIES</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">DESSERTS</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">FRUITS</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">FASHION</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">SPORTS</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">UNDERWEAR</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">SHOES</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">GLASSES</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">BAGS</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">HOME</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">JUDAICA</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">KITCHEN</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">JEWELRY</a> <br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">ELECTRONICS</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">ACCESORIES</a><br>
+                            <input type="checkbox" name="list"  value="20">  <a href="#">BEAUTY</a> <br>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="btn btn-lg btn-default shopButton"> LIST</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {{>mapView}}
+    {{/if}}
+    {{#if showList}}
+        {{>listView}}
+    {{/if}}
+    {{#if showComments}}
+        {{>commentView}}
+    {{/if}}
+        <!--{{else}}-->
+    <!--<div class = "logo">Welcome to ShakShuk!</div>-->
+    <!--<input type = "text" id = "username" placeholder = "Username">-->
+    <!--<button id = "createUser">Create User</button>-->
+        <!--{{/if}}-->
+</template>
+
+<template name = "mapView">
+    <div id="map"></div>
+
+{{#with selectedStore}}
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Shuck {{name}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img class = "imgModal" src = {{picture}}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Rating</h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{score}}/5
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Top Comments</h3>
+                                </div>
+                                <div class="panel-body">
+                                    {{commentsTop}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {{/with}}
+</template>
+
+<template name = "listView">
+    <div class = "listImg">
+        <button class="btn btn-lg btn-default  smalltext" id = "mapPage" style = "float: left">Back to Map</button>
+        <div class="content-holder" >
+            <table>
+                <tbody class = "listTable">
+                {{#each store}}
+                    <tr>
+                        <td>
+                            <div> <img  class="imgshuk" src={{picture}}>  </div> </td>
+                        <div class="stripe2">
+                            <td>
+                                <div class="info"> SHUK {{name}}</div>
+                                <div class="info">{{name}}, HACARMEL ST </div>
+                                <div class="info">{{subcategory}} </div> <br>
+                                <div class="acidjs-rating-stars acidjs-rating-disabled">
+                                    <form style = "width: 300px">
+                                        <input  type="radio" name="group-3" id="group-3-0" value="5" /><label for="group-3-0"></label><!--
+        --><input  type="radio" name="group-3" id="group-3-1" value="4" /><label for="group-3-1"></label><!--
+        --><input  type="radio" name="group-3" id="group-3-2" value="3" /><label for="group-3-2"></label><!--
+        --><input  type="radio" name="group-3" id="group-3-3" value="2" /><label for="group-3-3"></label><!--
+        --><input  type="radio" name="group-3" id="group-3-4"  value="1" /><label for="group-3-4"></label>
+                                        {{check}}
+                                    </form>
+                                </div>
+                                <p class="lead">
+                                    <a href="#" class="btn btn-lg btn-default  smalltext" id = "commentButton">Comments</a>
+                                </p>
+                            </td>
+                        </div>
+                    </tr>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                {{/each}}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</template>
+
+<template name = "commentView">
+    <div class = "commentImg">
+        <button class="btn btn-lg btn-default  smalltext" id = "listPage" style = "float: left">Back to List</button>
+        <div class="acidjs-rating-stars rating-margin margin-top">
+            <form>
+                <input type="radio" name="group-1" id="group-1-0" value="5" /><label for="group-1-0"></label><!--
+        --><input type="radio" name="group-1" id="group-1-1" value="4" /><label for="group-1-1"></label><!--
+        --><input type="radio" name="group-1" id="group-1-2" value="3" /><label for="group-1-2"></label><!--
+        --><input type="radio" name="group-1" id="group-1-3" value="2" /><label for="group-1-3"></label><!--
+        --><input type="radio" name="group-1" id="group-1-4"  value="1" /><label for="group-1-4"></label>
+            </form>
+        </div>
+        <br>
+
+        <textarea  class="comment-margin" type = "text" id = "addComment" placeholder = "Comments" rows="5" cols="100"> </textarea>
+        <br>
+        <p class="lead">
+            <a href="#" class="btn btn-lg btn-default  smalltext" id = "submitScore">Shuk it up!</a>
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="hideScroll">
+            <div class='hidden-scrollbar'>
+                <div class='inner'>
+                    {{#each comments}}
+                        <p class="comments"> {{comment}}</p>
+                        <hr width="50%">
+                        <br>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>
+
+<template name = "rate">
+    {{#with selectedStore}}
+        <div id = "store">{{name}}</div>
+        <select id = "rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <input type = "text" id ="addComment" placeholder = "Comments">
+        <button id = "submitScore">Submit</button>
+    {{/with}}
+</template>
